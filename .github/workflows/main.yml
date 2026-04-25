@@ -53,6 +53,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /home/${{ secrets.CLOUD_USER }}/app
-            # pull the new image from dockerhub and make it up
-            docker compose pull
-            docker compose up -d
+            
+            # docker-compose or docker compose 
+            docker-compose pull || docker compose pull
+            docker-compose up -d || docker compose up -d
