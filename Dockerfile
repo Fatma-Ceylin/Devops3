@@ -1,4 +1,4 @@
-FROM openjdk:25-jdk-slim
+FROM container-registry.oracle.com/java/jdk:25
 WORKDIR /app
 COPY build/libs/*SNAPSHOT.jar app.jar
 EXPOSE 8080
