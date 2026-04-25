@@ -14,11 +14,11 @@ jobs:
       - uses: actions/checkout@v4
 
       # java
-      - name: Set up JDK 25
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '25'
-          distribution: 'oracle'
+          java-version: '21'
+          distribution: 'temurin'
           cache: gradle
 
       # permissions to gradle
