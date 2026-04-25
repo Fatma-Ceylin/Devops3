@@ -1,13 +1,5 @@
-FROM eclipse-temurin:25-jdk-jammy
-
-
+FROM openjdk:25-jdk-slim
 WORKDIR /app
-
-
-COPY build/libs/*-SNAPSHOT.jar app.jar
-
-
-EXPOSE 8081
-
-
+COPY build/libs/*SNAPSHOT.jar app.jar
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
