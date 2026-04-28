@@ -64,3 +64,6 @@ jobs:
           script: |
             chmod +x /home/${{ secrets.CLOUD_USER }}/app/deploy.sh
             /home/${{ secrets.CLOUD_USER }}/app/deploy.sh
+            
+
+      #db eklemeye çalışılacak
