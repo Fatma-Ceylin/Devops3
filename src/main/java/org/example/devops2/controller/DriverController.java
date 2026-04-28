@@ -1,33 +1,53 @@
 package org.example.devops2.controller;
 
 import org.example.devops2.dto.DriverDTO;
+import org.example.devops2.service.DriverService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/drivers")
 public class DriverController {
 
-    // 1. DriverService bağımlılığını yorum satırı yapıyoruz
-    // private final DriverService driverService;
+    private final DriverService driverService;
 
-    // 2. Constructor'ı parametresiz hale getiriyoruz
-    public DriverController() {
+    public DriverController(DriverService driverService) {
+        this.driverService = driverService;
     }
 
     @GetMapping
     public ResponseEntity<List<DriverDTO>> getAllDrivers() {
-        // 3. Servis çağrısı yerine boş liste dönüyoruz
-        return ResponseEntity.ok(new ArrayList<>());
+        return ResponseEntity.ok(driverService.getAllDrivers());
     }
 
     @GetMapping("/get/{id}")
     public ResponseEntity<DriverDTO> getDriverById(@PathVariable Long id) {
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(driverService.getDriverById(id));
     }
 
-    // Diğer metotları da benzer şekilde sadeleştirebilirsin...
+    @PostMapping("/add")
+    public ResponseEntity<DriverDTO> createDriver(@RequestBody DriverDTO driverDTO) {
+        return new ResponseEntity<>(
+                driverService.createDriver(driverDTO),
+                HttpStatus.CREATED
+        );
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<DriverDTO> updateDriver(
+            @PathVariable Long id,
+            @RequestBody DriverDTO driverDTO) {
+        return ResponseEntity.ok(
+                driverService.updateDriver(id, driverDTO)
+        );
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteDriver(@PathVariable Long id) {
+        driverService.deleteDriver(id);
+        return ResponseEntity.noContent().build();
+    }
 }
