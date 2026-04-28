@@ -1,16 +1,18 @@
 #!/bin/bash
 
-# Kullanıcı adını buraya açıkça yaz (Örn: fceylin)
-IMAGE_NAME="fceylin/devops3-app:latest"
-CONTAINER_NAME="app-webapp-1"
+cd /home/ec2-user/app
 
-echo "Yeni imaj çekiliyor: $IMAGE_NAME"
-docker pull $IMAGE_NAME
+echo "--- Yeni imajlar DockerHub'dan çekiliyor ---"
+# Docker compose dosyasındaki imajların (webapp vb.) en güncel halini çeker
+docker compose pull
 
-echo "Eski konteyner durduruluyor..."
-docker stop $CONTAINER_NAME || true
-docker rm $CONTAINER_NAME || true
+echo "--- Sistem yeniden başlatılıyor (Database + Uygulama) ---"
+# Eski konteynerleri durdurur ve yenilerini ayağa kaldırır
+docker compose up -d --remove-orphans
 
-echo "Yeni konteyner başlatılıyor..."
-# Port eşlemesini senin sistemine göre (80:8081) ayarladım
-docker run -d --name $CONTAINER_NAME -p 80:8081 $IMAGE_NAME
+echo "--- Temizlik yapılıyor ---"
+# Eski/isimsiz imajları silerek sunucuda yer açar
+docker image prune -f
+
+echo "--- Güncel Konteynır Durumu ---"
+docker ps
