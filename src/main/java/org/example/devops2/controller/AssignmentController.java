@@ -28,7 +28,7 @@ public class AssignmentController {
         return ResponseEntity.ok(assignmentService.getAssignmentById(id));
     }
 
-    @PostMapping("/add")
+    @PostMapping("/add")  //burada düzeltme
     public ResponseEntity<AssignmentDTO> createAssignment(
             @RequestBody AssignmentDTO assignmentDTO) {
         return new ResponseEntity<>(
