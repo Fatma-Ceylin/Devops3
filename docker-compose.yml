@@ -24,7 +24,7 @@ services:
     ports:
       - "80:8081"
     environment:
-      # Veritabanı bağlantı bilgileri (Uygulaman içindeki properties'i ezer)
+
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/devops_db?allowPublicKeyRetrieval=true&useSSL=false
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: mysql

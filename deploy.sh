@@ -2,17 +2,17 @@
 
 cd /home/ec2-user/app
 
-echo "--- Yeni imajlar DockerHub'dan çekiliyor ---"
-# Docker compose dosyasındaki imajların (webapp vb.) en güncel halini çeker
+echo "--- New images are being pulled ---"
+# pulls the last versions of images inside the docker compose file
 docker-compose pull
 
-echo "--- Sistem yeniden başlatılıyor (Database + Uygulama) ---"
-# Eski konteynerleri durdurur ve yenilerini ayağa kaldırır
+echo "--- System is being restarted: Our database + application ---"
+# stops old containers and makes up the new ones
 docker-compose up -d --remove-orphans
 
-echo "--- Temizlik yapılıyor ---"
-# Eski/isimsiz imajları silerek sunucuda yer açar
+echo "--- Old and unused images are being cleaned ---"
+# removes old images and recesses
 docker image prune -f
 
-echo "--- Güncel Konteynır Durumu ---"
+echo "--- Status of containers ---"
 docker ps
