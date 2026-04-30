@@ -16,7 +16,7 @@ public class HomeController {
     @GetMapping("/")
     public ResponseEntity<String> home() {
         LOGGER.info("Home endpoint accessed");
-        return new ResponseEntity<>("Welcome to  Driver Management System API", HttpStatus.OK);
+        return new ResponseEntity<>("Welcome to  Driver Management System APIiiiiii", HttpStatus.OK);
     }
 
     @GetMapping("/status")
