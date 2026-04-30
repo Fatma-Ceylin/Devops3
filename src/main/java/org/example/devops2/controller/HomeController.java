@@ -16,17 +16,15 @@ public class HomeController {
     @GetMapping("/")
     public ResponseEntity<String> home() {
         LOGGER.info("Home endpoint accessed");
-        return new ResponseEntity<>("Welcome to  Driver Management System APIIIIIII", HttpStatus.OK);
+        return new ResponseEntity<>("Welcome to  Driver Management System API", HttpStatus.OK);
     }
 
-    // Projenin durumunu kontrol etmek için bir health check endpoint'i
     @GetMapping("/status")
     public ResponseEntity<String> status() {
         LOGGER.info("Status check endpoint accessed");
         return new ResponseEntity<>("System is up and running!", HttpStatus.OK);
     }
 
-    // Basit bir proje bilgi endpoint'i
     @GetMapping("/info")
     public ResponseEntity<String> info() {
         LOGGER.info("Info endpoint accessed");

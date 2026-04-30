@@ -2,13 +2,13 @@ package org.example.devops2.dto;
 
 public class DriverDTO {
 
-    private long id;
+    private Long id;
     private String name;
     private String address;
     private String phone;
     private boolean isDeleted;
 
-    public DriverDTO(long id, String name, String address, String phone,boolean deleted) {
+    public DriverDTO(Long id, String name, String address, String phone,boolean deleted) {
         this.id = id;
         this.name = name;
         this.address = address;

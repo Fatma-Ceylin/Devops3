@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class AssignmentDTO {
 
-    private long id;
+    private Long id;
     private LocalDateTime assignedDate;
     private LocalDateTime returnDate;
     private long driverId;
@@ -12,7 +12,7 @@ public class AssignmentDTO {
 
     public AssignmentDTO() {}
 
-    public AssignmentDTO(long id, LocalDateTime assignedDate,
+    public AssignmentDTO(Long id, LocalDateTime assignedDate,
                          LocalDateTime returnDate,
                          long driverId, long vehicleId) {
         this.id = id;
